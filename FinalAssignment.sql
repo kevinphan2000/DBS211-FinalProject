@@ -5,8 +5,8 @@ CREATE TABLE Properties (
     OwnerID INT NOT NULL,
     Address VARCHAR(255) NOT NULL,
     PropertyType VARCHAR(100) CHECK (PropertyType IN ('House', 'Condo', 'Apartment', 'Townhouse')),
-    Status VARCHAR(100) CHECK (Status IN ('Available', 'Occupied')),
-    RentPrice NUMBER(7,2),
+    Status VARCHAR(50) CHECK (Status IN ('Available', 'Occupied')),
+    RentPrice INT,
     FOREIGN KEY (OwnerID) REFERENCES Owners(OwnerID)
 )
 
@@ -22,5 +22,12 @@ CREATE TABLE Owner (
 
 CREATE TABLE Payment (
     PaymentID INT IDENTITY(1,1) PRIMARY KEY,
-    
+    LeaseID INT NOT NULL,
+    PaymentDate DATE NOT NULL,
+    AmountToPay DECIMAL(8,2) NOT NULL,
+    Status VARCHAR(50) CHECK (Status IN ('Available', 'Occupied')),
+    PayMethod VARCHAR(50) CHECK (Method IN ('Cheque', 'Credit', 'Cash')),
+    Purpose VARCHAR(50),
+    FOREIGN KEY (LeaseID) REFERENCES Lease_Agreement(LeaseID)
 )
+
