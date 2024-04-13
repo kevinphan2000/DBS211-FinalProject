@@ -1,0 +1,71 @@
+/* Properties sample data creation */
+INSERT ALL
+      INTO PROPERTIES VALUES (1001, 123 Main Street, 'House', 'Available', 4000)
+      INTO PROPERTIES VALUES (1002, 234 Finch Avenue East, 'Condo', 'Occupied', 3200)
+      INTO PROPERTIES VALUES (1003, 3456 Steeles Avenue East, 'House', 'Available', 5500)
+      INTO PROPERTIES VALUES (1004, 7650 Kennedy Road, 'Apartment', 'Available', 2400)
+      INTO PROPERTIES VALUES (1005, 4650 Markham Road, 'Townhouse', 'Occupied', 3500)
+      INTO PROPERTIES VALUES (1006, 3410 Midland Avenue, 'House', 'Available', 5400)
+      INTO PROPERTIES VALUES (1007, 5500 Yonge Street, 'Apartment', 'Available', 3000)
+      INTO PROPERTIES VALUES (1008, 890 Bloor Street West, 'Apartment', 'Occupied', 3700)
+      INTO PROPERTIES VALUES (1009, 1200 King Street West, 'Apartment', 'Occupied', 3800)
+      INTO PROPERTIES VALUES (1010, 6500 Yonge Street, 'Condo', 'Available', 2600)
+      INTO PROPERTIES VALUES (1011, 6780 Yonge Street, 'Condo', 'Occupied', 2900)
+      INTO PROPERTIES VALUES (1012, 345 Don Mills Road, 'House', 'Available', 4500)
+      INTO PROPERTIES VALUES (1013, 565 Don Mills Road, 'Apartment', 'Occupied', 1700)
+      INTO PROPERTIES VALUES (1014, 1210 Don Mills Road , 'Townhouse', 'Available', 3900)
+      INTO PROPERTIES VALUES (1015, 988 Seneca Hill Drive, 'House', 'Occupied', 4200)
+      INTO PROPERTIES VALUES (1016, 190 Seneca Hill Drive, 'Townhouse', 'Available', 3650)
+      INTO PROPERTIES VALUES (1017, 835 Lesile Street, 'Townhouse', 'Occupied', 5500)
+      INTO PROPERTIES VALUES (1018, 3900 Lesile Street, 'House', 'Available', 6000)
+      INTO PROPERTIES VALUES (1019, 465 Woodbine Avenue, 'House', 'Occupied', 4800)
+      INTO PROPERTIES VALUES (1020, 823 Woodbine Avenue, 'Condo', 'Available', 3300)
+SELECT * FROM DUAL;
+
+/* Owner sample data creation */
+INSERT ALL
+      INTO OWNER VALUES (0011, 'John', 'Doe', '123-456-7890', 'john.doe@example.com')
+      INTO OWNER VALUES (0012, 'Jane', 'Smith', '234-567-8901', 'jane.smith@example.com')
+      INTO OWNER VALUES (0013, 'James', 'Johnson', '345-678-9012', 'james.johnson@example.com')
+      INTO OWNER VALUES (0014, 'Jennifer', 'Williams', '456-789-0123', 'jennifer.williams@example.com')
+      INTO OWNER VALUES (0015, 'Jacob', 'Jones', '567-890-1234', 'jacob.jones@example.com')
+      INTO OWNER VALUES (0016, 'Jessica', 'Brown', '678-901-2345', 'jessica.brown@example.com')
+      INTO OWNER VALUES (0017, 'Joshua', 'Davis', '789-012-3456', 'joshua.davis@example.com')
+      INTO OWNER VALUES (0018, 'Julia', 'Miller', '890-123-4567', 'julia.miller@example.com')
+      INTO OWNER VALUES (0019, 'Joseph', 'Wilson', '901-234-5678', 'joseph.wilson@example.com')
+      INTO OWNER VALUES (0020, 'Jasmine', 'Moore', '012-345-6789', 'jasmine.moore@example.com')
+      INTO OWNER VALUES (0021, 'Jonathan', 'Taylor', '123-456-7890', 'jonathan.taylor@example.com')
+      INTO OWNER VALUES (0022, 'Jade', 'Anderson', '234-567-8901', 'jade.anderson@example.com')
+      INTO OWNER VALUES (0023, 'Jordan', 'Thomas', '345-678-9012', 'jordan.thomas@example.com')
+      INTO OWNER VALUES (0024, 'Jillian', 'Jackson', '456-789-0123', 'jillian.jackson@example.com')
+      INTO OWNER VALUES (0025, 'Jeremy', 'White', '567-890-1234', 'jeremy.white@example.com')
+      INTO OWNER VALUES (0026, 'Jenna', 'Harris', '678-901-2345', 'jenna.harris@example.com')
+      INTO OWNER VALUES (0027, 'Justin', 'Martin', '789-012-3456', 'justin.martin@example.com')
+      INTO OWNER VALUES (0028, 'Joyce', 'Thompson', '890-123-4567', 'joyce.thompson@example.com')
+      INTO OWNER VALUES (0029, 'Jason', 'Garcia', '901-234-5678', 'jason.garcia@example.com')
+      INTO OWNER VALUES (0030, 'Julie', 'Martinez', '012-345-6789', 'julie.martinez@example.com')
+SELECT * FROM DUAL;
+
+/* Payment sample data creation */
+INSERT ALL
+      INTO PAYMENT VALUES (1, 3001, to_date('01/01/2024', 'DD/MM/YYYY'), 4000.00, 'Available', 'Cheque', 'January Rent')
+      INTO PAYMENT VALUES (2, 3002, to_date('01/01/2024', 'DD/MM/YYYY'), 3200.00, 'Occupied', 'Credit', 'January Rent')
+      INTO PAYMENT VALUES (3, 3003, to_date('01/02/2024', 'DD/MM/YYYY'), 5500.00, 'Available', 'Cash', 'February Rent')
+      INTO PAYMENT VALUES (4, 3004, to_date('01/02/2024', 'DD/MM/YYYY'), 2400.00, 'Available', 'Cheque', 'February Rent')
+      INTO PAYMENT VALUES (5, 3005, to_date('01/03/2024', 'DD/MM/YYYY'), 3500.00, 'Occupied', 'Credit', 'March Rent')
+      INTO PAYMENT VALUES (6, 3006, to_date('01/03/2024', 'DD/MM/YYYY'), 5400.00, 'Available', 'Cash', 'March Rent')
+      INTO PAYMENT VALUES (7, 3007, to_date('01/04/2024', 'DD/MM/YYYY'), 3000.00, 'Available', 'Cheque', 'April Rent')
+      INTO PAYMENT VALUES (8, 3008, to_date('01/04/2024', 'DD/MM/YYYY'), 3700.00, 'Occupied', 'Credit', 'April Rent')
+      INTO PAYMENT VALUES (9, 3009, to_date('01/05/2024', 'DD/MM/YYYY'), 3800.00, 'Occupied', 'Cash', 'May Rent')
+      INTO PAYMENT VALUES (10, 3010, to_date('01/05/2024', 'DD/MM/YYYY'), 2600.00, 'Available', 'Cheque', 'May Rent')
+      INTO PAYMENT VALUES (11, 3011, to_date('01/06/2024', 'DD/MM/YYYY'), 2900.00, 'Occupied', 'Credit', 'June Rent')
+      INTO PAYMENT VALUES (12, 3012, to_date('01/06/2024', 'DD/MM/YYYY'), 4500.00, 'Available', 'Cash', 'June Rent')
+      INTO PAYMENT VALUES (13, 3013, to_date('01/07/2024', 'DD/MM/YYYY'), 1700.00, 'Occupied', 'Cheque', 'July Rent')
+      INTO PAYMENT VALUES (14, 3014, to_date('01/07/2024', 'DD/MM/YYYY'), 3900.00, 'Available', 'Credit', 'July Rent')
+      INTO PAYMENT VALUES (15, 3015, to_date('01/08/2024', 'DD/MM/YYYY'), 4200.00, 'Occupied', 'Cash', 'August Rent')
+      INTO PAYMENT VALUES (16, 3016, to_date('01/08/2024', 'DD/MM/YYYY'), 3650.00, 'Available', 'Cheque', 'August Rent')
+      INTO PAYMENT VALUES (17, 3017, to_date('01/09/2024', 'DD/MM/YYYY'), 5500.00, 'Occupied', 'Credit', 'September Rent')
+      INTO PAYMENT VALUES (18, 3018, to_date('01/09/2024', 'DD/MM/YYYY'), 6000.00, 'Available', 'Cash', 'September Rent'),
+      INTO PAYMENT VALUES (19, 3019, to_date('01/10/2024', 'DD/MM/YYYY'), 4800.00, 'Occupied', 'Cheque', 'October Rent'),
+      INTO PAYMENT VALUES (20, 3020, to_date('01/10/2024', 'DD/MM/YYYY'), 3300.00, 'Available', 'Credit', 'October Rent')
+SELECT * FROM DUAL;
