@@ -1,7 +1,7 @@
 -- DBS211 ZGG Final Project Milestone 3-Group 8
 
 CREATE TABLE Properties (
-    PropertyID INT IDENTITY(1,1) PRIMARY KEY,
+    PropertyID INT PRIMARY KEY,
     OwnerID INT NOT NULL,
     Address VARCHAR(255) NOT NULL,
     PropertyType VARCHAR(100) CHECK (PropertyType IN ('House', 'Condo', 'Apartment', 'Townhouse')),

@@ -52,6 +52,15 @@ ORDER BY
     LeaseID DESC;
 
 
-
+-- List all properties per Owner. This view displays the number of properties each owner has.
+-- It can be beneficial for segmenting the market or discovering potential clients.
+CREATE OR REPLACE VIEW PropertiesPerOwner AS
+SELECT Owner.OwnerID, 
+    Owner.ContactNumber,
+    Owner.FirstName || ' ' || Owner.LastName AS "Full Name",
+    COUNT(Properties.PropertyID) AS NumOfProperties
+FROM Owner
+JOIN Properties ON Owner.OwnerID == Properties.OwnerID
+GROUP BY Owner.OwnerID, Owner.ContactNumber
 
 
