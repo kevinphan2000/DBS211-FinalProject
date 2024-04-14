@@ -6,20 +6,22 @@
 
 -- Topic: Database for Rental Property Management System - Business Report
 
--- Case 1: Identifying the Top Real Estate Agent of the Month
+/*
+   Case 1: Identifying the Top Real Estate Agent of the Month
 
--- Purpose:
--- The view is created in order to identify who is the most successful real estate agent of a particular month, based on how many
--- valid leasing contracts they have initiated within the month. The number is determined by counting the number of the leasing contracts
--- with their starting date within the current month and is associated with a particular real estate agent.
-
--- Benefits:
--- This view could management level to recognize and reward the agent staff with the top performance. It could not only provide more
--- incentive to the staff members, but also motivates other staff to strive for better performance so as to compete for the award. On the other
--- hand, by comparing the leasing contracts initiased by various agent staff, management could also realise those underperformed agent staff and 
--- could suggest extra training to them for their improvement. Lastly, based on the trend of the number of valid leasing contracts, management
--- could understand the business environment, which could faciliate subsequent strategic planning that could antipicate the market demand and
--- allocate the resources more effciently.
+   Purpose:
+   The view is created in order to identify who is the most successful real estate agent of a particular month, based on how many
+   valid leasing contracts they have initiated within the month. The number is determined by counting the number of the leasing contracts
+   with their starting date within the current month and is associated with a particular real estate agent.
+   
+   Benefits:
+   This view could management level to recognize and reward the agent staff with the top performance. It could not only provide more
+   incentive to the staff members, but also motivates other staff to strive for better performance so as to compete for the award. On the other
+   hand, by comparing the leasing contracts initiased by various agent staff, management could also realise those underperformed agent staff and
+   could suggest extra training to them for their improvement. Lastly, based on the trend of the number of valid leasing contracts, management
+   could understand the business environment, which could faciliate subsequent strategic planning that could antipicate the market demand and
+   allocate the resources more effciently.
+*/
 
 -- SQL Query for view
 -- List the information of each leasing contract, including the start date and the corresponding real estate agent
@@ -51,9 +53,50 @@ ORDER BY
     Month DESC, 
     LeaseID DESC;
 
+/*
+   Case 2: Identifying the backlog of Maintenance Requests
 
--- List all properties per Owner. This view displays the number of properties each owner has.
--- It can be beneficial for segmenting the market or discovering potential clients.
+   Purpose:
+   The view is to find out which maintenance request already there for at least 1 months not being closed or completed.
+
+   Benefits:
+   By checking if there are a backlog of maintenance requests, we could inform the person in charge to prioritise their tasks to take care of those tasks.
+*/ 
+
+CREATE VIEW MAINTENANCEREQBACKLOG AS
+        SELECT
+            E.EMPLOYEEID,
+            E.FIRSTNAME,
+            E.LASTNAME,
+            E.EMAIL,
+            ROUND(MONTHS_BETWEEN(SYSDATE, MR.REQUESTDATE), 1) AS MONTHDIFF,
+            MR.REQUESTID,
+            u.code,
+            p.address,
+            p.name
+        FROM
+            MAINTENANCEREQUESTS MR
+            JOIN EMPLOYEE E
+               ON MR.SUPERINTENDENT = E.EMPLOYEE
+            JOIN UNITS u
+               ON MR.UNITID = u.UNITID
+            JOIN Properties p
+               On p.PropertyID = u.propertyID
+        WHERE
+            MONTHS_BETWEEN(SYSDATE, MR.REQUESTDATE) > 1
+            AND MR.STATUS IN ('Open', 'In Progress')
+        ORDER BY
+            MONTHDIFF DESC;
+
+
+/*
+   Case 3: List all properties per Owner.
+
+   Purpose: This view displays the number of properties each owner has.
+
+   Benefits: It can be beneficial for segmenting the market or discovering potential clients.
+*/
+
 CREATE OR REPLACE VIEW PropertiesPerOwner AS
 SELECT Owner.OwnerID, 
     Owner.ContactNumber,
