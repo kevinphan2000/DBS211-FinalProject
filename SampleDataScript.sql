@@ -1,6 +1,8 @@
-/* Contact sample data creation */
-
-
+-- DBS211 ZGG Final Project Milestone 3 - Group 8 (Sample Data Script)
+-- - Henry Lau (121235238)
+-- - Hiu Fung Chan (106184237)
+-- - Trung Kien Phan (123266231)
+-- Date: 14 April 2024
 
 /* Properties sample data creation */
 INSERT ALL
@@ -257,3 +259,6 @@ INSERT ALL
       INTO LEASETENANT VALUES (3019, 19, 2600.00, 2000.00)
       INTO LEASETENANT VALUES (3020, 20, 2700.00, 2000.00)
 SELECT * FROM DUAL;
+
+
+

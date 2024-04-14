@@ -1,4 +1,8 @@
--- DBS211 ZGG Final Project Milestone 3-Group 8
+-- DBS211 ZGG Final Project Milestone 3 - Group 8 (Create Table Script)
+-- - Henry Lau (121235238)
+-- - Hiu Fung Chan (106184237)
+-- - Trung Kien Phan (123266231)
+-- Date: 14 April 2024
 
 CREATE TABLE Properties (
     PropertyID INT PRIMARY KEY,
