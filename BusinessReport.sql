@@ -72,8 +72,7 @@ CREATE VIEW MAINTENANCEREQBACKLOG AS
             ROUND(MONTHS_BETWEEN(SYSDATE, MR.REQUESTDATE), 1) AS MONTHDIFF,
             MR.REQUESTID,
             u.code,
-            p.address,
-            p.name
+            p.address
         FROM
             MAINTENANCEREQUESTS MR
             JOIN EMPLOYEE E

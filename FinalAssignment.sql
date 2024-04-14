@@ -7,7 +7,6 @@ CREATE TABLE Properties (
     PropertyType VARCHAR(100) CHECK (PropertyType IN ('House', 'Condo', 'Apartment', 'Townhouse')),
     Status VARCHAR(50) CHECK (Status IN ('Available', 'Occupied')),
     RentPrice INT,
-    Name VARCHAR(100),
     FOREIGN KEY (OwnerID) REFERENCES Owners(OwnerID)
 )
 
