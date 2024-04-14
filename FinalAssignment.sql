@@ -102,7 +102,7 @@ CREATE TABLE Lease_Tenant (
 );
 
 CREATE TABLE Units (
-    unitID INT,
+    unitID INT PRIMARY KEY,
     propertyID INT,
     unitType VARCHAR(20) NOT NULL,
     area DECIMAL(8,2) NOT NULL,
