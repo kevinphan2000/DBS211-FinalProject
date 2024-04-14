@@ -25,7 +25,7 @@ CREATE TABLE Payment (
     LeaseID INT NOT NULL,
     PaymentDate DATE NOT NULL,
     AmountToPay DECIMAL(8,2) NOT NULL,
-    Status VARCHAR(50) CHECK (Status IN ('Available', 'Occupied')),
+    Status VARCHAR(50) CHECK (LOWER(Status) IN ('initiated', 'pending', 'completed', 'cancelled')),
     PayMethod VARCHAR(50) CHECK (Method IN ('Cheque', 'Credit', 'Cash')),
     Purpose VARCHAR(50),
     FOREIGN KEY (LeaseID) REFERENCES Lease_Agreement(LeaseID)
