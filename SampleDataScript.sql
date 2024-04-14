@@ -112,7 +112,7 @@ INSERT ALL
       INTO PAYMENT VALUES (18, 3008, to_date('01/06/2024', 'DD/MM/YYYY'), 2500.00, 'Pending', 'Cash', 'June Rent')
       INTO PAYMENT VALUES (19, 3009, to_date('01/07/2024', 'DD/MM/YYYY'), 2600.00, 'Completed', 'Cheque', 'July Rent')
       INTO PAYMENT VALUES (20, 3010, to_date('01/08/2024', 'DD/MM/YYYY'), 2700.00, 'Pending', 'Credit', 'August Rent')
-SELECT * FROM DUAL;
+SELECT * FROM DUAL;  
 
 /* Tenants sample data creation */
 INSERT ALL
@@ -162,4 +162,73 @@ INSERT ALL
       INTO LEASEAGREEMENT VALUES (3020, 1020, 2020, to_date('01/08/2024', 'DD/MM/YYYY'), to_date('01/08/2025', 'DD/MM/YYYY'))
 SELECT * FROM DUAL;
 
-/*
+/* Department Sample Data Creation */
+INSERT ALL
+      INTO DEPARTMENT VALUES (0001, 'Human Resources', '123-456-7890', '2/F, Main Building')
+      INTO DEPARTMENT VALUES (0002, 'Finance', '234-567-8901', '3/F, Main Buidling')
+      INTO DEPARTMENT VALUES (0003, 'Information Technology', '345-678-9012', '4/F, Main Building')
+      INTO DEPARTMENT VALUES (0004, 'Leasing', '456-789-0123', '1/F, Main Building')
+      INTO DEPARTMENT VALUES (0005, 'Customer Service', '567-890-1234', 'G/F, Main Buidling')
+      INTO DEPARTMENT VALUES (0006, 'Operations', '678-901-2345', 'G/F, New Wing Buidling')
+      INTO DEPARTMENT VALUES (0007, 'Sales', '789-012-3456', '1/F, New Wing Building')
+      INTO DEPARTMENT VALUES (0008, 'Marketing', '890-123-4567', '2/F, New Wing Building')
+SELECT * FROM DUAL;
+
+/* Employees Sample Data Creation */
+INSERT ALL
+      INTO EMPLOYEES VALUES (1001, 'Ethan', 'Taylor', 'ethan.taylor@gmail.com', '123-456-7890', 0001)
+      INTO EMPLOYEES VALUES (1002, 'Olivia', 'Brown', 'olivia.brown@gmail.com', '234-567-8901', 0002)
+      INTO EMPLOYEES VALUES (1003, 'Liam', 'Harris', 'liam.harris@gmail.com', '345-678-9012', 0003)
+      INTO EMPLOYEES VALUES (1004, 'Emma', 'Clark', 'emma.clark@gmail.com', '456-789-0123', 0004),
+      INTO EMPLOYEES VALUES (1005, 'Noah', 'Rodriguez', 'noah.rodriguez@gmail.com', '567-890-1234', 0005)
+      INTO EMPLOYEES VALUES (1006, 'Ava', 'Lewis', 'ava.lewis@gmail.com', '678-901-2345', 0006)
+      INTO EMPLOYEES VALUES (1007, 'Isabella', 'Lee', 'isabella.lee@gmail.com', '789-012-3456', 0007)
+      INTO EMPLOYEES VALUES (1008, 'Sophia', 'Walker', 'sophia.walker@gmail.com', '890-123-4567', 0008)
+      INTO EMPLOYEES VALUES (1009, 'Mia', 'Hall', 'mia.hall@gmail.com', '901-234-5678', 0001)
+      INTO EMPLOYEES VALUES (1010, 'Charlotte', 'Allen', 'charlotte.allen@gmail.com', '012-345-6789', 0002)
+      INTO EMPLOYEES VALUES (1011, 'Amelia', 'Young', 'amelia.young@gmail.com', '123-456-7890', 0003)
+      INTO EMPLOYEES VALUES (1012, 'Harper', 'Hernandez', 'harper.hernandez@gmail.com', '234-567-8901', 0004)
+      INTO EMPLOYEES VALUES (1013, 'Evelyn', 'King', 'evelyn.king@gmail.com', '345-678-9012', 0005)
+      INTO EMPLOYEES VALUES (1014, 'Abigail', 'Wright', 'abigail.wright@gmail.com', '456-789-0123', 0006)
+      INTO EMPLOYEES VALUES (1015, 'Emily', 'Lopez', 'emily.lopez@gmail.com', '567-890-1234', 0007)
+      INTO EMPLOYEES VALUES (1016, 'Elizabeth', 'Hill', 'elizabeth.hill@gmail.com', '678-901-2345', 0008)
+      INTO EMPLOYEES VALUES (1017, 'Sofia', 'Scott', 'sofia.scott@gmail.com', '789-012-3456', 0001)
+      INTO EMPLOYEES VALUES (1018, 'Avery', 'Green', 'avery.green@gmail.com', '890-123-4567', 0002)
+      INTO EMPLOYEES VALUES (1019, 'Ella', 'Adams', 'ella.adams@gmail.com', '901-234-5678', 0003),
+      INTO EMPLOYEES VALUES (1020, 'Scarlett', 'Thompson', 'scarlett.thompson@gmail.com', '012-345-6789', 0004)
+      INTO EMPLOYEES VALUES (1021, 'Grace', 'White', 'grace.white@gmail.com', '123-456-7890', 0005)
+      INTO EMPLOYEES VALUES (1022, 'Chloe', 'Harris', 'chloe.harris@gmail.com', '234-567-8901', 0006)
+      INTO EMPLOYEES VALUES (1023, 'Victoria', 'Martin', 'victoria.martin@gmail.com', '345-678-9012', 0007)
+      INTO EMPLOYEES VALUES (1024, 'Madison', 'Thompson', 'madison.thompson@gmail.com', '456-789-0123', 0008)
+      INTO EMPLOYEES VALUES (1025, 'Luna', 'Garcia', 'luna.garcia@gmail.com', '567-890-1234', 0001)
+      INTO EMPLOYEES VALUES (1026, 'Lucas', 'Martinez', 'lucas.martinez@gmail.com', '678-901-2345', 0002)
+      INTO EMPLOYEES VALUES (1027, 'Mason', 'Robinson', 'mason.robinson@gmail.com', '789-012-3456', 0003)
+      INTO EMPLOYEES VALUES (1028, 'Carter', 'Clark', 'carter.clark@gmail.com', '890-123-4567', 0004)
+      INTO EMPLOYEES VALUES (1029, 'Owen', 'Rodriguez', 'owen.rodriguez@gmail.com', '901-234-5678', 0005)
+      INTO EMPLOYEES VALUES (1030, 'Wyatt', 'Lewis', 'wyatt.lewis@gmail.com', '012-345-6789', 0006)
+SELECT * FROM DUAL;
+
+/* Vendors sample data creation */
+INSERT ALL
+      INTO VENDORS VALUES (2001, 'Cleaning', '123-456-7890', 'abcdefg@gmail.com')
+      INTO VENDORS VALUES (2002, 'Maintenance', '234-567-8901', 'efgh@gmail.com')
+      INTO VENDORS VALUES (2003, 'Security', '345-678-9012', 'kghtt@gmail.com')
+      INTO VENDORS VALUES (2004, 'Landscaping', '456-789-0123', 'ggdjjj@gmail.com')
+      INTO VENDORS VALUES (2005, 'Plumbing', '567-890-1234', 'sdgwgg@gmail.com')
+      INTO VENDORS VALUES (2006, 'Electrical', '678-901-2345', 'fsdggg@gmail.com')
+      INTO VENDORS VALUES (2007, 'HVAC', '789-012-3456', 'vsffc@gmail.com')
+      INTO VENDORS VALUES (2008, 'Painting', '890-123-4567', 'wgwgwefg@gmail.com')
+      INTO VENDORS VALUES (2009, 'Carpentry', '901-234-5678', 'vdffggy@gmail.com')
+      INTO VENDORS VALUES (2010, 'Roofing', '012-345-6789', 'pffpefk@gmail.com')
+      INTO VENDORS VALUES (2011, 'Flooring', '123-456-7890', 'fefefj@gmail.com')
+      INTO VENDORS VALUES (2012, 'Pest Control', '234-567-8901', 'afjdfjv@gmail.com')
+      INTO VENDORS VALUES (2013, 'Appliance Repair', '345-678-9012', 'wgfewgdcc@gmail.com')
+      INTO VENDORS VALUES (2014, 'Window Cleaning', '456-789-0123', 'thghhy@gmail.com')
+      INTO VENDORS VALUES (2015, 'Carpet Cleaning', '567-890-1234', 'dgrg@gmail.com')
+      INTO VENDORS VALUES (2016, 'Locksmith', '678-901-2345', 'fsfsdv@gmail.com')
+      INTO VENDORS VALUES (2017, 'Moving', '789-012-3456', 'fwefggbg@gmail.com')
+      INTO VENDORS VALUES (2018, 'Storage', '890-123-4567', 'pfmmvlp@gmail.com')
+      INTO VENDORS VALUES (2019, 'Waste Removal', '901-234-5678', 'dfnvifhh@gmail.com')
+      INTO VENDORS VALUES (2020, 'Snow Removal', '012-345-6789', 'ttyfuf@gmail.com')
+SELECT * FROM DUAL;
+

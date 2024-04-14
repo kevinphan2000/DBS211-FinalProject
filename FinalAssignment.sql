@@ -72,4 +72,22 @@ CREATE TABLE Vendors (
     serviceType VARCHAR(25) DEFAULT 'Cleaning',
     phone VARCHAR(11) NOT NULL,
     email VARCHAR(50) NOT NULL
-)
+);
+
+CREATE TABLE Department (
+    DepartmentID INT PRIMARY KEY,
+    Name VARCHAR(255),
+    Phone VARCHAR(255),
+    Location VARCHAR(255)
+);
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(100),
+    Phone VARCHAR(15),
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES DEPARTMENT(DepartmentID)
+);
+
