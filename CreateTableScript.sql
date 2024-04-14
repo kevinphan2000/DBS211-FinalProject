@@ -4,6 +4,7 @@
 -- - Trung Kien Phan (123266231)
 -- Date: 14 April 2024
 
+/* Properties table creation */
 CREATE TABLE Properties (
     PropertyID INT PRIMARY KEY,
     OwnerID INT NOT NULL,
@@ -12,18 +13,18 @@ CREATE TABLE Properties (
     Status VARCHAR(50) CHECK (Status IN ('Available', 'Occupied')),
     RentPrice INT,
     FOREIGN KEY (OwnerID) REFERENCES Owners(OwnerID)
-)
+);
 
-
+/* Owner table creation */
 CREATE TABLE Owner (
     OwnerID INT IDENTITY(1,1) PRIMARY KEY,
     FirstName VARCHAR(100) NOT NULL,
     LastName VARCHAR(100) NOT NULL,
     ContactNumber VARCHAR(15) CHECK (ContactNumber LIKE '[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]'),
     Email VARCHAR(100) NOT NULL
-)
+);
 
-
+/* Payment table creation */
 CREATE TABLE Payment (
     PaymentID INT IDENTITY(1,1) PRIMARY KEY,
     LeaseID INT NOT NULL,
@@ -33,9 +34,9 @@ CREATE TABLE Payment (
     PayMethod VARCHAR(50) CHECK (Method IN ('Cheque', 'Credit', 'Cash')),
     Purpose VARCHAR(50),
     FOREIGN KEY (LeaseID) REFERENCES Lease_Agreement(LeaseID)
-)
+);
 
-
+/* Tenants table creation */
 CREATE TABLE Tenants (
     TenantID INT IDENTITY(1,1) PRIMARY KEY,
     FirstName VARCHAR(50) NOT NULL,
@@ -43,9 +44,9 @@ CREATE TABLE Tenants (
     ContactNumber VARCHAR(15) CHECK (ContactNumber LIKE '[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]'),
     CreditScore INT NOT NULL,
     Email VARCHAR(100) NOT NULL
-)
+);
 
-
+/*Lease Agreement table creation*/
 CREATE TABLE LeaseAgreement (
     LeaseID INT PRIMARY KEY,
     unitID INT NOT NULL,
@@ -54,9 +55,9 @@ CREATE TABLE LeaseAgreement (
     EndDate DATE NOT NULL,
     FOREIGN KEY (unitID) REFERENCES Unit(unitID),
     FOREIGN KEY (agentID) REFERENCES Employee(employeeID)
-)
+);
 
-
+/* MaintenanceRequest Table Creation */
 CREATE TABLE MaintenanceRequests (
     requestID INT PRIMARY KEY,
     unitID INT NOT NULL, 
@@ -68,9 +69,10 @@ CREATE TABLE MaintenanceRequests (
     status VARCHAR(100) CHECK (status IN ('Open', 'In Progress', 'Closed')),
     FOREIGN KEY (vendorID) REFERENCES Vendor(vendorID),
     FOREIGN KEY (superintendent) REFERENCES Employee(employeeID)
+    FOREIGN KEY (unitID) REFERENCES Units(unitID)
 );
 
-
+/* Vendors table creation */
 CREATE TABLE Vendors (
     vendorID INT PRIMARY KEY,
     serviceType VARCHAR(25) DEFAULT 'Cleaning',
@@ -78,6 +80,7 @@ CREATE TABLE Vendors (
     email VARCHAR(50) NOT NULL
 );
 
+/* Department table Creation */
 CREATE TABLE Department (
     departmentID INT PRIMARY KEY,
     name VARCHAR(255),
@@ -85,6 +88,7 @@ CREATE TABLE Department (
     location VARCHAR(255)
 );
 
+/* Employees table Creation */
 CREATE TABLE Employees (
     employeeID INT PRIMARY KEY,
     firstName VARCHAR(50),
@@ -95,6 +99,7 @@ CREATE TABLE Employees (
     FOREIGN KEY (DepartmentID) REFERENCES DEPARTMENT(DepartmentID)
 );
 
+/* Lease_Tenant table creation */
 CREATE TABLE LeaseTenant (
     leaseID INT,
     tenantID INT,
@@ -105,6 +110,7 @@ CREATE TABLE LeaseTenant (
     FOREIGN KEY (tenantID) REFERENCES Tenants(tenantID),
 );
 
+/* Unit table creation */
 CREATE TABLE Units (
     unitID INT PRIMARY KEY,
     propertyID INT,
@@ -112,5 +118,5 @@ CREATE TABLE Units (
     area DECIMAL(8,2) NOT NULL,
     code VARCHAR(10) NOT NULL,
     FOREIGN KEY (propertyID) REFERENCES Properties(propertyID)
-)
+);
 
