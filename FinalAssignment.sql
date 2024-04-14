@@ -56,14 +56,14 @@ CREATE TABLE LeaseAgreement (
 CREATE TABLE MaintenanceRequests (
     requestID INT PRIMARY KEY,
     unitID INT NOT NULL, 
-    reportTo INT NOT NULL,
+    superintendent INT NOT NULL,
     requestDate DATE NOT NULL,
     issueDescription VARCHAR(MAX) NOT NULL,
     vendorID INT NOT NULL,
     cost INT NOT NULL,
     status VARCHAR(100) CHECK (status IN ('Open', 'In Progress', 'Closed')),
     FOREIGN KEY (vendorID) REFERENCES Vendor(vendorID),
-    FOREIGN KEY (reportTo) REFERENCES Employee(employeeID)
+    FOREIGN KEY (superintendent) REFERENCES Employee(employeeID)
 );
 
 
@@ -75,19 +75,38 @@ CREATE TABLE Vendors (
 );
 
 CREATE TABLE Department (
-    DepartmentID INT PRIMARY KEY,
-    Name VARCHAR(255),
-    Phone VARCHAR(255),
-    Location VARCHAR(255)
+    departmentID INT PRIMARY KEY,
+    name VARCHAR(255),
+    phone VARCHAR(15) CHECK (ContactNumber LIKE '[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]'),
+    location VARCHAR(255)
 );
 
 CREATE TABLE Employees (
-    EmployeeID INT PRIMARY KEY,
-    FirstName VARCHAR(50),
-    LastName VARCHAR(50),
-    Email VARCHAR(100),
-    Phone VARCHAR(15),
-    DepartmentID INT,
+    employeeID INT PRIMARY KEY,
+    firstName VARCHAR(50),
+    lastName VARCHAR(50),
+    email VARCHAR(100),
+    phone VARCHAR(15) CHECK (ContactNumber LIKE '[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]'),
+    departmentID INT,
     FOREIGN KEY (DepartmentID) REFERENCES DEPARTMENT(DepartmentID)
 );
+
+CREATE TABLE Lease_Tenant (
+    leaseID INT,
+    tenantID INT,
+    rentAmount DECIMAL(8,2) NOT NULL,
+    downPayment DECIMAL(8,2) NOT NULL,
+    PRIMARY KEY (leaseID, tenantID),
+    FOREIGN KEY (leaseID) REFERENCES LeaseAgreement(leaseID),
+    FOREIGN KEY (tenantID) REFERENCES Tenants(tenantID),
+);
+
+CREATE TABLE Units (
+    unitID INT,
+    propertyID INT,
+    unitType VARCHAR(20) NOT NULL,
+    area DECIMAL(8,2) NOT NULL,
+    code VARCHAR(10) NOT NULL,
+    FOREIGN KEY (propertyID) REFERENCES Properties(propertyID)
+)
 
