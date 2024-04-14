@@ -25,7 +25,7 @@
 
 -- SQL Query for view
 -- List the information of each leasing contract, including the start date and the corresponding real estate agent
-CREATE VIEW LeaseAgentDate AS
+CREATE OR REPLACE VIEW LeaseAgentDate AS
 SELECT 
     la.LeaseID, 
     e.firstName, 
@@ -63,7 +63,7 @@ ORDER BY
    By checking if there are a backlog of maintenance requests, we could inform the person in charge to prioritise their tasks to take care of those tasks.
 */ 
 
-CREATE VIEW MAINTENANCEREQBACKLOG AS
+CREATE OR REPLACE VIEW MAINTENANCEREQBACKLOG AS
         SELECT
             E.EMPLOYEEID,
             E.FIRSTNAME,
@@ -104,5 +104,38 @@ SELECT Owner.OwnerID,
 FROM Owner
 JOIN Properties ON Owner.OwnerID == Properties.OwnerID
 GROUP BY Owner.OwnerID, Owner.ContactNumber
+
+/*
+   Case 4: List all unpaid rent.
+
+   Purpose: This view displays the unpaid rent that last for at least 1 month.
+
+   Benefits: It could easily integrate to alert system to send a reminder email for those tenant who forget to paid their rent.
+*/
+
+SELECT 
+    ROUND(MONTHS_BETWEEN(SYSDATE, pymt.paymentDate), 1) AS MONTHDIFF,
+    t.firstName,
+    t.lastName,
+    t.contactNumber,
+    u.code,
+    p.address,
+    lt.rentAmount
+FROM 
+    Payment pymt
+    JOIN LeaseAgreement la on la.leaseID = pymt.leaseID
+    JOIN LeaseTenant lt on la.leaseID = lt.leaseID
+    JOIN Tenants t on t.tenantID = lt.tenantID
+    JOIN UNITS u ON MR.UNITID = u.UNITID
+    JOIN Properties p On p.PropertyID = u.propertyID 
+    
+WHERE 
+    Pymt.status in ('initiated', 'pending') AND MONTHS_BETWEEN(pymt.paymentDate, sysdate) > 1
+ORDER BY 
+    Month DESC, 
+    LeaseID DESC;
+
+
+
 
 
