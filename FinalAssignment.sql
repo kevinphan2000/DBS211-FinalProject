@@ -91,7 +91,7 @@ CREATE TABLE Employees (
     FOREIGN KEY (DepartmentID) REFERENCES DEPARTMENT(DepartmentID)
 );
 
-CREATE TABLE Lease_Tenant (
+CREATE TABLE LeaseTenant (
     leaseID INT,
     tenantID INT,
     rentAmount DECIMAL(8,2) NOT NULL,
